@@ -1,4 +1,6 @@
 import React from 'react';
+import ErrorField from "./components/ErrorField/ErrorField";
+
 import './TextEditor.css';
 
 /**
@@ -31,18 +33,21 @@ class TextEditor extends React.Component {
   render () {
 const colorArea = this.state.colortextArea;
 const text = this.state.text;
+
     const isMouseOver = this.state.isMouseOver;
     return (
       <div className="text-editor-container" >
-
         <textarea
           style={{backgroundColor : colorArea}}
           onChange={this.onTextChange}
           onMouseLeave={this.onMouseLeaveTextArea}
           onMouseOver={this.onMouseOverTextArea}
           className={isMouseOver ? "text-editor-container1" : "text-editor-container"}
-        >  </textarea>
+        />
         <p> {text} </p>
+        <ErrorField
+          value={this.state.text}
+        ></ErrorField>
       </div>
     );
   }
