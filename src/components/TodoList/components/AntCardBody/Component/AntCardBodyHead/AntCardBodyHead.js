@@ -1,6 +1,6 @@
 import React from 'react';
 import './AntCardBodyHead.css';
-// import TodoHeadText from "./TodoHeadText/TodoHeadText";
+import BodyTextHead from "./BodyTextHead/BodyTextHead";
 
 class AntCardBodyHead extends React.Component {
   constructor() {
@@ -13,7 +13,9 @@ class AntCardBodyHead extends React.Component {
     return (
       <div className="AntCardBodyHead-container">
 
-  <span>  Create a new todo </span>
+      <BodyTextHead>
+
+      </BodyTextHead>
 
 
       </div>
