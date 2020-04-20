@@ -1,8 +1,8 @@
 import React from 'react';
-import './BodyTextHead.css';
+import './BodyTextHeadDown.css';
 // import TodoHeadText from "./TodoHeadText/TodoHeadText";
 
-class BodyTextHead extends React.Component {
+class BodyTextHeadDown extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -18,12 +18,13 @@ class BodyTextHead extends React.Component {
     const colorText = this.state.onSelectColorText;
     const bagraund = this.state.color2;
     return (
-      <div className="BodyTextHead-container">
+      <div className="BodyTextHeadDown">
 
         <span
           onSelect={this.onSelectText}
-           style={{color:colorText, backgroundColor:bagraund}}>
-          Create a new todo
+           style={{color:colorText,
+                    backgroundColor:bagraund,}}>
+          Todo List
         </span>
 
 
@@ -32,4 +33,4 @@ class BodyTextHead extends React.Component {
   }
 }
 
-export default BodyTextHead;
+export default BodyTextHeadDown;

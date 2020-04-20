@@ -1,6 +1,7 @@
 import React from 'react';
 import './ant-card-body.css';
 import AntCardBodyHead from "./Component/AntCardBodyHead/AntCardBodyHead";
+import InputBodyConteiner from "./Component/AntCardBody/InputButonConteiner";
 
 class AntCardBody extends React.Component {
   constructor() {
@@ -12,9 +13,12 @@ class AntCardBody extends React.Component {
   render () {
     return (
       <div className="AntCardBody-container">
-<AntCardBodyHead>
+        <AntCardBodyHead>
 
-</AntCardBodyHead>
+        </AntCardBodyHead>
+        <InputBodyConteiner>
+
+        </InputBodyConteiner>
 
       </div>
     );

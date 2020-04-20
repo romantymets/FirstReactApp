@@ -23,7 +23,7 @@ class BodyTextHead extends React.Component {
         <span
           onSelect={this.onSelectText}
            style={{color:colorText, backgroundColor:bagraund}}>
-          Create a new todo
+          <b>Create a new todo</b>
         </span>
 
 
