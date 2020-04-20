@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextEditor from './components/TextEditor/TextEditor';
+import TodoList from './components/TodoList/TodoList';
 
 class App extends React.Component {
   constructor() {
@@ -45,6 +46,7 @@ class App extends React.Component {
           increase counter {begraund}
         </button>
         <TextEditor />
+        <TodoList />
       </div>
     );
   }
