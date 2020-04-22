@@ -1,4 +1,25 @@
-// import React from "react";
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.css'
+
+class Todolist extends React.Component {
+  constructor() {
+    super();
+    {
+    }
+  };
+
+  render () {
+
+    return (
+      <div className="ul-container" >
+        </div>
+    );
+  };
+}
+
+export default Todolist;
+
+// import T from "../App";
 // import PropTypes from 'prop-types'
 // import TodoItem from "../Todo/TodoItem";
 // const styles = {
@@ -18,3 +39,4 @@
 //     </ul>
 //   )
 // }
+// export default Todolist;
