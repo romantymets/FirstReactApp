@@ -7,12 +7,31 @@ class Todolist extends React.Component {
     {
     }
   };
+// todo:ТЕКСТ ЗАКРЕСЛЕНИЙ КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
+//  КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
 
-  render () {
-
+  render() {
+    const { todos, onItemCheck } = this.props
     return (
-      <div className="ul-container" >
-        </div>
+      <div className="ul-container">
+        <ul className="ul-container">
+          {todos.map((todo) =>
+            (<li className="li-conteiner" key={todo.id}>
+                <span>
+                     <input type="checkbox" className="checkbox-container" checked={todo.complited}
+                            onChange={onItemCheck(todo.id)}
+                     />
+                  {todo.id}.
+                       <strong className="strong-container">
+                         {todo.title}
+                       </strong>
+                </span>
+
+              <button className="btn btn-primary"> Delete</button>
+            </li>)
+          )}
+        </ul>
+      </div>
     );
   };
 }
