@@ -7,15 +7,7 @@
 .but{
     background:red;
 }
-.li-conteiner {
-    border: 1px solid lightskyblue;
-   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 4px;
-    padding: 5px;
-    margin-bottom: 2px;
-}
+
 .ul-container{
     list-style: none;
     margin: 0;

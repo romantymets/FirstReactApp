@@ -12,12 +12,14 @@ class App extends React.Component {
       todos: [],
       check: false
     };
+    this.inputRef = React.createRef();
   }
 
   onTextChange = (e) => {
     this.setState({ newInputText: e.target.value, })
   };
-  onButtonClick = () => {
+  onButtonClick = (e) => {
+    e.preventDefault()
     const newInputText = this.state.newInputText;
     const oldTodos = this.state.todos;
     this.setState({
@@ -27,6 +29,8 @@ class App extends React.Component {
         complited: false
       }]
     });
+    this.inputRef.current.value = '';
+    this.inputRef.current.focus();
   }
   onItemCheck = (id) => (e) => {
     const checket = e.target.checked
@@ -48,24 +52,43 @@ class App extends React.Component {
     this.setState({ todos: newArray })
   };
   /** todo: додати метод onItemRemove за аналогією як (не додавати в new array)*/
+  onItemRemove= (id) => (e) => {
+    const newArray = [];
+    this.state.todos.forEach(todo => {
+      if (todo.id !== id) {
+        newArray.push(todo)
+      }
+    })
+    // 4 put new array to state
+    const newIndexArray = newArray.map((todo,index) =>{
+      return {
+       ...todo,
+        id: index +1
+      }
+    })
+    this.setState({ todos: newIndexArray })
 
+  };
   render() {
     const newInputText = this.state.newInputText;
     const todos = this.state.todos;
     const check = this.state.check;
     return (
       <div className="app">
-        <h1> helo world </h1>
+        <h1> Todo List </h1>
         <div className="button-conteiner">
-          <input type={"text"} onChange={this.onTextChange}>
+          <form onSubmit={this.onButtonClick}>
+          <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}>
 
           </input>
-          <button className="btn btn-primary" type={"button"} onClick={this.onButtonClick}>
+          <button className="btn btn-primary" type={"submit"} >
             Add todo
           </button>
+          </form>
           <Todolist
             todos={todos}
             onItemCheck={this.onItemCheck}
+            onItemRemove={this.onItemRemove}
           >
           </Todolist>
 
