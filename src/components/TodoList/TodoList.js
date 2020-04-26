@@ -1,11 +1,9 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.css'
 import './TodoList.css'
-class Todolist extends React.Component {
+
+class TodoList extends React.Component {
   constructor() {
     super();
-    {
-    }
   };
 // todo:ТЕКСТ ЗАКРЕСЛЕНИЙ КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
 //  КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
@@ -21,12 +19,8 @@ class Todolist extends React.Component {
                      <input type="checkbox" className="checkbox-container" checked={todo.complited}
                             onChange={onItemCheck(todo.id)}
                      />
-                  {todo.id}.
-
-                         {todo.title}
-
+                  {todo.id}. {todo.title}
                 </span>
-
               <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
             </li>)
           )}
@@ -36,26 +30,4 @@ class Todolist extends React.Component {
   };
 }
 
-export default Todolist;
-
-// import T from "../App";
-// import PropTypes from 'prop-types'
-// import TodoItem from "../Todo/TodoItem";
-// const styles = {
-//   url: {
-//     listStyle: 'none',
-//     margin: 0,
-//     padding: 0
-//   }
-// }
-
-// export default function Todolist (props) {
-//   return(
-//     <ul style={styles.url}>
-//       { props.todos.map((todo, index) => {
-//        return <TodoItem todo={todo} key={todo.id} index={index + 1}/>
-//         })}
-//     </ul>
-//   )
-// }
-// export default Todolist;
+export default TodoList;
