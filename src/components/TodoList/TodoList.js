@@ -7,7 +7,6 @@ class TodoList extends React.Component {
   };
 // todo:ТЕКСТ ЗАКРЕСЛЕНИЙ КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
 //  КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
-
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
     return (
@@ -20,7 +19,12 @@ class TodoList extends React.Component {
                             onChange={onItemCheck(todo.id)}
                      />
                   {todo.id}. {todo.title}
+                  <span className="date-conteiner">
+                {todo.date.getDate()}.{todo.date.getMonth() + 1}.
+                    {todo.date.getFullYear()}   ,    {todo.date.getHours()}.
+                    {todo.date.getMinutes()}.{todo.date.getSeconds()}
                 </span>
+                  </span>
               <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
             </li>)
           )}

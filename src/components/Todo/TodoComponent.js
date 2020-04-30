@@ -10,6 +10,7 @@ class Todo extends React.Component {
     this.state = {
       newInputText: "",
       todos: [],
+
     };
     this.inputRef = React.createRef();
   }
@@ -25,12 +26,14 @@ class Todo extends React.Component {
       todos: [...oldTodos, {
         id: oldTodos.length + 1,
         title: newInputText,
-        complited: false
+        complited: false,
+        date: new Date(),
       }]
     });
     this.inputRef.current.value = '';
     this.inputRef.current.focus();
   };
+
   onItemCheck = (id) => (e) => {
     const checket = e.target.checked;
     //1 знайти елемент масиву todo
