@@ -1,10 +1,18 @@
 import React from "react";
+import moment from "moment";
 import './TodoList.css'
+
+
 
 class TodoList extends React.Component {
   constructor() {
     super();
+    this.state = {
+
+    };
+
   };
+
 // todo:ТЕКСТ ЗАКРЕСЛЕНИЙ КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
 //  КОЛИ ЧЕКЕД ТЕКСТ ДИКОРЕЙШЕН
   render() {
@@ -18,13 +26,13 @@ class TodoList extends React.Component {
                      <input type="checkbox" className="checkbox-container" checked={todo.complited}
                             onChange={onItemCheck(todo.id)}
                      />
+
                   {todo.id}. {todo.title}
                   <span className="date-conteiner">
-                {todo.date.getDate()}.{todo.date.getMonth() + 1}.
-                    {todo.date.getFullYear()}   ,    {todo.date.getHours()}.
-                    {todo.date.getMinutes()}.{todo.date.getSeconds()}
+                    {moment(todo.startDate).format("DD,MM,YYYY")}
                 </span>
                   </span>
+
               <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
             </li>)
           )}

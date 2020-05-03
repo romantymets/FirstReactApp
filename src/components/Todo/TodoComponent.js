@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoList from "../TodoList/TodoList";
-
+import DatePicker from "react-datepicker/es";
 import './Todo.css';
 
 class Todo extends React.Component {
@@ -10,11 +10,15 @@ class Todo extends React.Component {
     this.state = {
       newInputText: "",
       todos: [],
-
+      startDate: new Date()
     };
     this.inputRef = React.createRef();
   }
-
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
+  };
   onTextChange = (e) => {
     this.setState({ newInputText: e.target.value, })
   };
@@ -27,7 +31,7 @@ class Todo extends React.Component {
         id: oldTodos.length + 1,
         title: newInputText,
         complited: false,
-        date: new Date(),
+        startDate: this.state.startDate
       }]
     });
     this.inputRef.current.value = '';
@@ -78,6 +82,11 @@ class Todo extends React.Component {
         <div className="button-conteiner">
           <form onSubmit={this.onButtonClick}>
             <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}/>
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+              dateFormat={"dd,MM,yyyy"}
+            />
             <button className="btn btn-primary" type={"submit"}>
               Add todo
             </button>
@@ -86,6 +95,7 @@ class Todo extends React.Component {
             todos={todos}
             onItemCheck={this.onItemCheck}
             onItemRemove={this.onItemRemove}
+
           >
           </TodoList>
         </div>
