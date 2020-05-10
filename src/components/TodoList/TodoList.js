@@ -10,24 +10,25 @@ class TodoList extends React.Component {
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
     return (
-      <div className="ul-container">
-        <ul className="ul-container">
+        <div className="form-row">
+          <div className="col-md-6 mb-6">
+        <ul  className="list-group">
           {todos.map((todo) =>
-            (<li className="li-conteiner"  key={todo.id}>
+            (<li className="list-group-item"  key={todo.id}>
                 <span className={`${todo.complited ? 'checked-item' : ''}`} >
                      <input type="checkbox" className="checkbox-container" checked={todo.complited}
                             onChange={onItemCheck(todo.id)}
                      />
-                  {todo.id}. {todo.title}
-                  <span className="date-conteiner">
-                    {moment(todo.startDate).format("DD,MM,YYYY")}
-                </span>
+                  {todo.id}.
+                 {todo.title}
                   </span>
-              <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
+                    {moment(todo.startDate).format("DD,MM,YYYY")}
+                <button  className="btn btn-danger" onClick={onItemRemove(todo.id)}> Delete</button>
             </li>)
           )}
         </ul>
-      </div>
+          </div>
+        </div>
     );
   };
 }

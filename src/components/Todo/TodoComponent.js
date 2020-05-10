@@ -70,16 +70,33 @@ class Todo extends React.Component {
       <div className="todo">
         <h1> Todo List </h1>
         <div className="button-conteiner">
-          <form onSubmit={this.onButtonClick}>
-            <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}/>
-            <DatePicker
+          <form onSubmit={this.onButtonClick} className="needs-validation" novalidate>
+            <div className="form-row">
+              <div className="col-md-6 mb-3">
+                <label htmlFor="validationCustom01">Add Todo</label>
+            <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}
+                   className="form-control" id="validationCustom01" required/>
+                <div className="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div className="col-md-6 mb-3">
+                <label htmlFor="validationCustom02">Check Date</label>
+                <div className="col-md-12 mb-1">
+            <DatePicker className="form-control" id="validationCustom02" required
               selected={this.state.startDate}
               onChange={this.handleChange}
               dateFormat={"dd,MM,yyyy"}
             />
+                </div>
+                <div className="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
             <button className="btn btn-primary" type={"submit"}>
               Add todo
             </button>
+            </div>
           </form>
           <TodoList
             todos={todos}

@@ -1,11 +1,12 @@
 .todo {
     text-align: center;
-    width: 800px;
+    width: 1600px;
     margin: 0 auto;
 
 }
-.but{
-    background:red;
+.button-conteiner {
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .ul-container{

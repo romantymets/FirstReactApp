@@ -1,7 +1,10 @@
 .checked-item {
     text-decoration: line-through;
 }
-.li-conteiner {
+
+.list-group-item {
+    margin: 5px;
+    margin-right: 0px;
     border: 1px solid lightskyblue;
     display: flex;
     justify-content: space-between;
@@ -10,6 +13,8 @@
     padding: 5px;
     margin-bottom: 2px;
 }
-.date-conteiner{
-   margin-left: 400px;
+
+.checkbox-container{
+    position: relative;
+  left: 0px;
 }
