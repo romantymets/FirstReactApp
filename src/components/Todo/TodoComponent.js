@@ -1,12 +1,10 @@
 import React from 'react';
-import TodoList from "../TodoList/TodoList";
 import DatePicker from "react-datepicker/es";
+import TodoList from "../TodoList/TodoList";
 import './Todo.css';
-
 class Todo extends React.Component {
   constructor() {
     super();
-    // стан комонента
     this.state = {
       newInputText: "",
       todos: [],
@@ -37,14 +35,10 @@ class Todo extends React.Component {
     this.inputRef.current.value = '';
     this.inputRef.current.focus();
   };
-
   onItemCheck = (id) => (e) => {
     const checket = e.target.checked;
-    //1 знайти елемент масиву todo
     const carentTodo = this.state.todos.find(todo => todo.id === id);
-    //2 поміняти в ньому valye.complite na e.target.checked
     carentTodo.complited = checket;
-    // 3 create new array with new todo.it
     const newArray = [];
     this.state.todos.forEach(todo => {
       if (todo.id === id) {
@@ -53,10 +47,8 @@ class Todo extends React.Component {
         newArray.push(todo)
       }
     });
-    //4 put new array to state
     this.setState({ todos: newArray })
   };
-  /** todo: додати метод onItemRemove за аналогією як (не додавати в new array)*/
   onItemRemove = (id) => (e) => {
     const newArray = [];
     this.state.todos.forEach(todo => {
@@ -64,7 +56,6 @@ class Todo extends React.Component {
         newArray.push(todo)
       }
     });
-    // 4 put new array to state
     const newIndexArray = newArray.map((todo, index) => {
       return {
         ...todo,
@@ -73,7 +64,6 @@ class Todo extends React.Component {
     });
     this.setState({ todos: newIndexArray })
   };
-
   render() {
     const todos = this.state.todos;
     return (
@@ -95,7 +85,6 @@ class Todo extends React.Component {
             todos={todos}
             onItemCheck={this.onItemCheck}
             onItemRemove={this.onItemRemove}
-
           >
           </TodoList>
         </div>
@@ -103,5 +92,4 @@ class Todo extends React.Component {
     );
   }
 }
-
 export default Todo;
