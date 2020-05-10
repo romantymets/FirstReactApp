@@ -67,9 +67,10 @@ class Todo extends React.Component {
   render() {
     const todos = this.state.todos;
     return (
-      <div className="todo">
+      <div className="conteiner-fluid">
         <h1> Todo List </h1>
-        <div className="button-conteiner">
+        <div className="row" >
+        <div className="conteiner">
           <form onSubmit={this.onButtonClick} className="needs-validation" novalidate>
             <div className="form-row">
               <div className="col-md-6 mb-3">
@@ -98,14 +99,25 @@ class Todo extends React.Component {
             </button>
             </div>
           </form>
+          </div>
+          <div className="container-fluid">
+            <div className="row">
+            <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
+              <h2> Do </h2>
           <TodoList
             todos={todos}
             onItemCheck={this.onItemCheck}
             onItemRemove={this.onItemRemove}
           >
           </TodoList>
+            </div>
+            <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
+              <h2> Done </h2>
+            </div>
+            </div>
+          </div>
         </div>
-      </div>
+        </div>
     );
   }
 }

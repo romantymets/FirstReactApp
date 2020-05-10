@@ -10,8 +10,7 @@ class TodoList extends React.Component {
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
     return (
-        <div className="form-row">
-          <div className="col-md-6 mb-6">
+        <div className="container-fluid">
         <ul  className="list-group">
           {todos.map((todo) =>
             (<li className="list-group-item"  key={todo.id}>
@@ -28,7 +27,6 @@ class TodoList extends React.Component {
           )}
         </ul>
           </div>
-        </div>
     );
   };
 }
