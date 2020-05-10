@@ -71,14 +71,14 @@ class Todo extends React.Component {
         <h1> Todo List </h1>
         <div className="row" >
         <div className="conteiner">
-          <form onSubmit={this.onButtonClick} className="needs-validation" novalidate>
+          <form onSubmit={this.onButtonClick} className="was-validated" >
             <div className="form-row">
               <div className="col-md-6 mb-3">
-                <label htmlFor="validationCustom01">Add Todo</label>
+                <label>Add Todo</label>
             <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}
-                   className="form-control" id="validationCustom01" required/>
-                <div className="valid-feedback">
-                  Looks good!
+                   className="form-control" required/>
+                <div className="invalid-feedback">
+                  Please enter
                 </div>
               </div>
               <div className="col-md-6 mb-3">
@@ -105,7 +105,7 @@ class Todo extends React.Component {
             <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
               <h2> Do </h2>
           <TodoList
-            todos={todos}
+            todos={todos.filter(todo=>{return !todo.complited})}
             onItemCheck={this.onItemCheck}
             onItemRemove={this.onItemRemove}
           >
@@ -113,6 +113,12 @@ class Todo extends React.Component {
             </div>
             <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
               <h2> Done </h2>
+              <TodoList
+                todos={todos.filter(todo=>todo.complited)}
+                onItemCheck={this.onItemCheck}
+                onItemRemove={this.onItemRemove}
+              >
+              </TodoList>
             </div>
             </div>
           </div>
