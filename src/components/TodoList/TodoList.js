@@ -1,28 +1,34 @@
-import React from 'react';
-import './TodoList.css';
-import TodoHeader from "./components/TodoHeader/TodoHeader"
-import AntCardBody from "./components/AntCardBody/ant-card-body";
-import AntCardBodyDown from "./components/AntCardBodyDown/AntCardBodyDown";
+import React from "react";
+import moment from "moment";
+import './TodoList.css'
 class TodoList extends React.Component {
   constructor() {
     super();
     this.state = {
-    }
-  }
-
-  render () {
+    };
+  };
+  render() {
+    const { todos, onItemCheck,onItemRemove } = this.props
     return (
-      <div className="todo-list-container">
-        <TodoHeader>
-        </TodoHeader>
-        <AntCardBody>
-        </AntCardBody>
-        <AntCardBodyDown>
-
-        </AntCardBodyDown>
+      <div className="ul-container">
+        <ul className="ul-container">
+          {todos.map((todo) =>
+            (<li className="li-conteiner"  key={todo.id}>
+                <span className={`${todo.complited ? 'checked-item' : ''}`} >
+                     <input type="checkbox" className="checkbox-container" checked={todo.complited}
+                            onChange={onItemCheck(todo.id)}
+                     />
+                  {todo.id}. {todo.title}
+                  <span className="date-conteiner">
+                    {moment(todo.startDate).format("DD,MM,YYYY")}
+                </span>
+                  </span>
+              <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
+            </li>)
+          )}
+        </ul>
       </div>
     );
-  }
+  };
 }
-
 export default TodoList;

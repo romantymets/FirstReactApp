@@ -1,8 +1,15 @@
-.todo-list-container {
-    border: 1px solid orangered;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: rgb(243,243,243);
-    height: 600px;
+.checked-item {
+    text-decoration: line-through;
 }
-
+.li-conteiner {
+    border: 1px solid lightskyblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 2px;
+}
+.date-conteiner{
+   margin-left: 400px;
+}
