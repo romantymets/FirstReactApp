@@ -9,11 +9,12 @@ class TodoList extends React.Component {
   };
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
+
     return (
         <div className="container-fluid">
           <ul className="list-group">
             {todos.map((todo) =>
-                (<li className="list-group-item" key={todo.id}>
+                (<li className="list-group-item" key={todo.id}  style={ {background:`${todo.background}`}}>
                   <div className="row">
                     <div className="col-1">
                       <input type="checkbox" className="checkbox-container" checked={todo.complited}

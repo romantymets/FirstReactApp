@@ -1,17 +1,26 @@
 import React from 'react';
 import DatePicker from "react-datepicker/es";
 import TodoList from "../TodoList/TodoList";
+import {SketchPicker} from 'react-color'
 import './Todo.css';
+
 class Todo extends React.Component {
   constructor() {
     super();
     this.state = {
       newInputText: "",
       todos: [],
-      startDate: new Date()
+      startDate: new Date(),
+      displayColorPicker: false,
+      background: '#fff',
     };
     this.inputRef = React.createRef();
   }
+
+  handleChangeComplete = (color) => {
+    this.setState({ background: color.hex });
+  };
+
   handleChange = date => {
     this.setState({
       startDate: date
@@ -29,7 +38,8 @@ class Todo extends React.Component {
         id: oldTodos.length + 1,
         title: newInputText,
         complited: false,
-        startDate: this.state.startDate
+        startDate: this.state.startDate,
+        background: this.state.background,
       }]
     });
     this.inputRef.current.value = '';
@@ -64,67 +74,76 @@ class Todo extends React.Component {
     });
     this.setState({ todos: newIndexArray })
   };
+
   render() {
     const todos = this.state.todos;
     return (
       <div className="conteiner-fluid">
         <h1> Todo List </h1>
-        <div className="row" >
-        <div className="conteiner">
-          <form onSubmit={this.onButtonClick} className="was-validated" >
-            <div className="form-row">
-              <div className="col-md-6 mb-3">
-                <label>Add Todo</label>
-            <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}
-                   className="form-control" required/>
-                <div className="invalid-feedback">
-                  Please enter
+        <div className="row">
+          <div className="conteiner">
+            <form onSubmit={this.onButtonClick} className="was-validated">
+              <div className="list-inline">
+                <div className="form-group ">
+                  <label>Add Todo</label>
+                  <input ref={this.inputRef} type={"text"} onChange={this.onTextChange}
+                         className="form-control" required/>
+                  <div className="invalid-feedback">
+                    Please enter
+                  </div>
                 </div>
+                <div className="form-group ">
+                  <label htmlFor="validationCustom02">Check Date</label>
+                  <div>
+                    <DatePicker className="form-control" id="validationCustom02" required
+                                selected={this.state.startDate}
+                                onChange={this.handleChange}
+                                dateFormat={"dd,MM,yyyy"}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="validationCustom02">Check Color</label>
+                  <SketchPicker color={this.state.background}
+                                onChangeComplete={this.handleChangeComplete}
+                                selected={this.state.background}
+                                className={"color"}
+                  />
+                </div>
+                <button className="btn btn-primary" type={"submit"}>
+                  Add todo
+                </button>
               </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="validationCustom02">Check Date</label>
-                <div className="col-md-12 mb-1">
-            <DatePicker className="form-control" id="validationCustom02" required
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-              dateFormat={"dd,MM,yyyy"}
-            />
-                </div>
-                <div className="valid-feedback">
-                  Looks good!
-                </div>
-              </div>
-            <button className="btn btn-primary" type={"submit"}>
-              Add todo
-            </button>
-            </div>
-          </form>
+            </form>
           </div>
           <div className="container-fluid">
             <div className="row">
-            <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
-              <h2> Do </h2>
-          <TodoList
-            todos={todos.filter(todo=>{return !todo.complited})}
-            onItemCheck={this.onItemCheck}
-            onItemRemove={this.onItemRemove}
-          >
-          </TodoList>
-            </div>
-            <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
-              <h2> Done </h2>
-              <TodoList
-                todos={todos.filter(todo=>todo.complited)}
-                onItemCheck={this.onItemCheck}
-                onItemRemove={this.onItemRemove}
-              >
-              </TodoList>
-            </div>
+              <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
+                <h2> Do </h2>
+                <TodoList
+                  todos={todos.filter(todo => {
+                    return !todo.complited
+                  })}
+                  onItemCheck={this.onItemCheck}
+                  onItemRemove={this.onItemRemove}
+                >
+                </TodoList>
+              </div>
+              <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
+                <h2> Done </h2>
+                <TodoList
+                  todos={todos.filter(todo => todo.complited)}
+                  onItemCheck={this.onItemCheck}
+                  onItemRemove={this.onItemRemove}
+                >
+                </TodoList>
+              </div>
             </div>
           </div>
         </div>
-        </div>
+      </div>
     );
   }
 }
+
 export default Todo;
