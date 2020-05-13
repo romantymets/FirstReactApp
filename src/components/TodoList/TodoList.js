@@ -9,25 +9,31 @@ class TodoList extends React.Component {
   };
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
+
     return (
-      <div className="ul-container">
-        <ul className="ul-container">
-          {todos.map((todo) =>
-            (<li className="li-conteiner"  key={todo.id}>
-                <span className={`${todo.complited ? 'checked-item' : ''}`} >
-                     <input type="checkbox" className="checkbox-container" checked={todo.complited}
-                            onChange={onItemCheck(todo.id)}
-                     />
-                  {todo.id}. {todo.title}
-                  <span className="date-conteiner">
-                    {moment(todo.startDate).format("DD,MM,YYYY")}
-                </span>
-                  </span>
-              <button className="btn btn-primary" onClick={onItemRemove(todo.id)}> Delete</button>
-            </li>)
-          )}
-        </ul>
-      </div>
+        <div className="container-fluid">
+          <ul className="list-group">
+            {todos.map((todo) =>
+                (<li className="list-group-item" key={todo.id}  style={ {background:`${todo.background}`}}>
+                  <div className="row">
+                    <div className="col-1">
+                      <input type="checkbox" className="checkbox-container" checked={todo.complited}
+                             onChange={onItemCheck(todo.id)}
+                      />
+                    </div>
+                    <div className="col-7">
+                      <p  className={`text-cut ${todo.complited ? 'checked-item' : ''}`} >
+                        {todo.id}.{todo.title}</p>
+                    </div>
+                    <div className="col-2">   {moment(todo.startDate).format("DD,MM,YYYY")}   </div>
+                    <div className="col-2">
+                      <button className="btn btn-danger" onClick={onItemRemove(todo.id)}> Delete</button>
+                    </div>
+                  </div>
+                </li>)
+              )}
+              </ul>
+          </div>
     );
   };
 }

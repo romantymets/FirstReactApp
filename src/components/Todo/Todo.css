@@ -1,11 +1,17 @@
-.todo {
+.conteiner {
     text-align: center;
-    width: 800px;
-    margin: 0 auto;
+
+    width: 600px;
 
 }
-.but{
-    background:red;
+.color{
+    margin: 0 auto;
+    width: 500px;
+}
+
+.button-conteiner {
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .ul-container{
@@ -19,4 +25,15 @@
 .checkbox-container{
     margin-left: 5px;
     width: 50px;
+}
+.popover {
+    position: absolute;
+    zIndex: 2;
+}
+.cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
