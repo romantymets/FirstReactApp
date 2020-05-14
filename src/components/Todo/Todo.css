@@ -1,8 +1,9 @@
 .conteiner {
     text-align: center;
-
     width: 600px;
-
+}
+.list-inline{
+   margin-left: 60px;
 }
 .color{
     margin: 0 auto;

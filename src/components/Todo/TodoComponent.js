@@ -81,7 +81,7 @@ class Todo extends React.Component {
       <div className="conteiner-fluid">
         <h1> Todo List </h1>
         <div className="row">
-          <div className="conteiner">
+          <div className="conteiner col-6">
             <form onSubmit={this.onButtonClick} className="was-validated">
               <div className="list-inline">
                 <div className="form-group ">
@@ -116,10 +116,10 @@ class Todo extends React.Component {
               </div>
             </form>
           </div>
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
-                <h2> Do </h2>
+          <div className="conteiner col-6">
+            <div className="list-inline">
+              <div className="conteiner-fluid">
+                <h3> Do </h3>
                 <TodoList
                   todos={todos.filter(todo => {
                     return !todo.complited
@@ -129,8 +129,8 @@ class Todo extends React.Component {
                 >
                 </TodoList>
               </div>
-              <div className="col-xs-12 col-sm-9 col-md-4 col-lg-6">
-                <h2> Done </h2>
+              <div className="conteiner-fluid">
+                <h3> Done </h3>
                 <TodoList
                   todos={todos.filter(todo => todo.complited)}
                   onItemCheck={this.onItemCheck}
