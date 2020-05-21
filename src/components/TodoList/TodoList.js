@@ -37,7 +37,6 @@ class TodoList extends React.Component {
                     <div className="col-2">   {moment(todo.startDate).format("DD,MM,YYYY")}   </div>
                     <div className="col-1">
                       <button className="btn btn-danger" onClick={onItemRemove(todo.id)}> Delete</button>
-                      // new chenge
                     </div>
                   </div>
                 </li>)

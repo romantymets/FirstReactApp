@@ -1,9 +1,9 @@
 import React from 'react';
 import DatePicker from "react-datepicker/es";
-import TodoList from "../TodoList/TodoList";
 import {SketchPicker} from 'react-color'
+import Navbar from "../Navbar/Navbar";
+import TodoList from "../TodoList/TodoList";
 import './Todo.css';
-
 class Todo extends React.Component {
   constructor() {
     super();
@@ -78,10 +78,12 @@ class Todo extends React.Component {
   render() {
     const todos = this.state.todos;
     return (
-      <div className="conteiner-fluid">
+      <div className="conteiner">
+        {/*<Navbar>*/}
+        {/*</Navbar>*/}
         <h1> Todo List </h1>
         <div className="row">
-          <div className="conteiner col-6">
+          <div className="container">
             <form onSubmit={this.onButtonClick} className="was-validated">
               <div className="list-inline">
                 <div className="form-group ">
@@ -107,7 +109,7 @@ class Todo extends React.Component {
                   <SketchPicker color={this.state.background}
                                 onChangeComplete={this.handleChangeComplete}
                                 selected={this.state.background}
-                                className={"color"}
+                                className="color"
                   />
                 </div>
                 <button className="btn btn-primary" type={"submit"}>
@@ -116,7 +118,7 @@ class Todo extends React.Component {
               </div>
             </form>
           </div>
-          <div className="conteiner col-6">
+          <div className="container-fluid">
             <div className="list-inline">
               <div className="conteiner-fluid">
                 <h3> Do </h3>
