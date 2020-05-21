@@ -13,6 +13,7 @@ class Todo extends React.Component {
       startDate: new Date(),
       displayColorPicker: false,
       background: '#fff',
+      displeyNavButton:false,
     };
     this.inputRef = React.createRef();
   }
@@ -78,9 +79,11 @@ class Todo extends React.Component {
   render() {
     const todos = this.state.todos;
     return (
+      <div className="container-fluid">
+        <Navbar
+          displeyNavButton={this.displeyNavButton}>
+        </Navbar>
       <div className="conteiner">
-        {/*<Navbar>*/}
-        {/*</Navbar>*/}
         <h1> Todo List </h1>
         <div className="row">
           <div className="container">
@@ -143,6 +146,7 @@ class Todo extends React.Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }
