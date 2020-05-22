@@ -7,9 +7,9 @@ class TodoList extends React.Component {
     this.state = {
     };
   };
+
   render() {
     const { todos, onItemCheck,onItemRemove } = this.props
-
     return (
         <div className="container-fluid">
           <ul className="list-group">

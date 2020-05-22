@@ -1,7 +1,6 @@
 import React from 'react';
 import DatePicker from "react-datepicker/es";
 import {SketchPicker} from 'react-color'
-import Navbar from "../Navbar/Navbar";
 import TodoList from "../TodoList/TodoList";
 import './Todo.css';
 class Todo extends React.Component {
@@ -13,11 +12,16 @@ class Todo extends React.Component {
       startDate: new Date(),
       displayColorPicker: false,
       background: '#fff',
-      displeyNavButton:false,
     };
     this.inputRef = React.createRef();
   }
-
+  componentWillMount() {
+    console.log('----->componentWillMount')
+  }
+  componentDidMount() {
+    console.log('----->didmount')
+    this.inputRef.current.focus();
+  }
   handleChangeComplete = (color) => {
     this.setState({ background: color.hex });
   };
@@ -80,9 +84,6 @@ class Todo extends React.Component {
     const todos = this.state.todos;
     return (
       <div className="container-fluid">
-        <Navbar
-          displeyNavButton={this.displeyNavButton}>
-        </Navbar>
       <div className="conteiner">
         <h1> Todo List </h1>
         <div className="row">

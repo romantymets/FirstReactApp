@@ -1,14 +1,30 @@
 import React from "react";
 import './Navbar.css'
-import 'react-bootstrap'
 class Navbar extends React.Component {
   constructor() {
     super();
     this.state = {
+      isDisplay: false,
     };
-  };
+    this.onButtonClick = this.onButtonClick.bind(this);
+    console.log('----->Constryctor')
+  }
+  componentWillMount() {
+    console.log('----->componentWillMount')
+  }
+  componentDidMount() {
+    console.log('----->didmount')
+    const input = document.getElementById("search");
+    input.focus()
+  }
+
+  onButtonClick () {
+    const isDisplay = this.state.isDisplay;
+    this.setState({ isDisplay: !isDisplay})
+  }
+
   render() {
-    const { displeyNavButton } = this.props
+    console.log('----->render');
     return (
      <div className="container-fluid">
        <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,11 +43,10 @@ class Navbar extends React.Component {
                <a className="nav-link" href="#">Link</a>
              </li>
              <li className="nav-item dropdown">
-               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false" >
+               <a className="nav-link dropdown-toggle"  onClick={this.onButtonClick} >
                  Dropdown
                </a>
-               <div className="dropdown-menu"  aria-labelledby="navbarDropdown">
+               <div className={`dropdown-menu ${this.state.isDisplay ? 'show': ''}`}  aria-labelledby="navbarDropdown" >
                  <a className="dropdown-item" href="#">Action</a>
                  <a className="dropdown-item" href="#">Another action</a>
                  <div className="dropdown-divider"></div>
@@ -43,7 +58,7 @@ class Navbar extends React.Component {
              </li>
            </ul>
            <form className="form-inline my-2 my-lg-0">
-             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+             <input className="form-control mr-sm-2" type="search" placeholder="Search" id="search"/>
                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
            </form>
          </div>
