@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker/es";
 import {SketchPicker} from 'react-color'
 import TodoList from "../TodoList/TodoList";
 import './Todo.css';
+
 class Todo extends React.Component {
   constructor() {
     super();
@@ -83,11 +84,12 @@ class Todo extends React.Component {
   render() {
     const todos = this.state.todos;
     return (
-      <div className="container-fluid">
-      <div className="conteiner">
-        <h1> Todo List </h1>
-        <div className="row">
-          <div className="container">
+      <div className="row">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 className="card-title"> Todo List </h1>
+        <div className="container">
+          <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-10 col-lg-12">
             <form onSubmit={this.onButtonClick} className="was-validated">
               <div className="list-inline">
                 <div className="form-group ">
@@ -101,19 +103,21 @@ class Todo extends React.Component {
                 <div className="form-group ">
                   <label htmlFor="validationCustom02">Check Date</label>
                   <div>
-                    <DatePicker className="form-control" id="validationCustom02" required
-                                selected={this.state.startDate}
-                                onChange={this.handleChange}
-                                dateFormat={"dd,MM,yyyy"}
+                    <DatePicker
+                      className="form-control" id="validationCustom02" required
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      dateFormat={"dd,MM,yyyy"}
                     />
                   </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="validationCustom02">Check Color</label>
-                  <SketchPicker color={this.state.background}
-                                onChangeComplete={this.handleChangeComplete}
-                                selected={this.state.background}
-                                className="color"
+                  <SketchPicker
+                    color={this.state.background}
+                    onChangeComplete={this.handleChangeComplete}
+                    selected={this.state.background}
+                    className="color"
                   />
                 </div>
                 <button className="btn btn-primary" type={"submit"}>
@@ -122,9 +126,9 @@ class Todo extends React.Component {
               </div>
             </form>
           </div>
-          <div className="container-fluid">
-            <div className="list-inline">
-              <div className="conteiner-fluid">
+          </div>
+          <div className="container">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h3> Do </h3>
                 <TodoList
                   todos={todos.filter(todo => {
@@ -134,8 +138,8 @@ class Todo extends React.Component {
                   onItemRemove={this.onItemRemove}
                 >
                 </TodoList>
-              </div>
-              <div className="conteiner-fluid">
+              <div className="row">
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h3> Done </h3>
                 <TodoList
                   todos={todos.filter(todo => todo.complited)}
@@ -143,6 +147,7 @@ class Todo extends React.Component {
                   onItemRemove={this.onItemRemove}
                 >
                 </TodoList>
+                </div>
               </div>
             </div>
           </div>

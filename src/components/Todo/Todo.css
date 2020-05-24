@@ -1,6 +1,8 @@
-.conteiner {
+.card-title{
+    margin-top:30px;
+}
+.row {
     text-align: center;
-    width: 1200px;
 }
 .list-inline{
    margin-left: 60px;

@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Todo from "./components/Todo/TodoComponent";
 import Navbar from "./components/Navbar/Navbar";
 import './App.css';
+
 class App extends React.Component {
   constructor() {
     super();
@@ -12,7 +13,6 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Navbar/>
-        <br/>
        <Todo />
       </div>
     );

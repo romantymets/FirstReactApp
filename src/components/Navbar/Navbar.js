@@ -7,17 +7,30 @@ class Navbar extends React.Component {
       isDisplay: false,
     };
     this.onButtonClick = this.onButtonClick.bind(this);
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
     console.log('----->Constryctor')
   }
   componentWillMount() {
-    console.log('----->componentWillMount')
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
   componentDidMount() {
-    console.log('----->didmount')
     const input = document.getElementById("search");
-    input.focus()
+    input.focus();
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+  setWrapperRef(node) {
+    this.wrapperRef = node;
   }
 
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+
+    }
+  }
   onButtonClick () {
     const isDisplay = this.state.isDisplay;
     this.setState({ isDisplay: !isDisplay})
@@ -26,15 +39,14 @@ class Navbar extends React.Component {
   render() {
     console.log('----->render');
     return (
-     <div className="container-fluid">
+     <div className="container">
        <nav className="navbar navbar-expand-lg navbar-light bg-light">
          <a className="navbar-brand" href="#">TodoList</a>
          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
            <span className="navbar-toggler-icon"></span>
          </button>
-
-         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+         <div className="collapse navbar-collapse" >
            <ul className="navbar-nav mr-auto">
              <li className="nav-item active">
                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
@@ -46,7 +58,8 @@ class Navbar extends React.Component {
                <a className="nav-link dropdown-toggle"  onClick={this.onButtonClick} >
                  Dropdown
                </a>
-               <div className={`dropdown-menu ${this.state.isDisplay ? 'show': ''}`}  aria-labelledby="navbarDropdown" >
+               <div ref={this.setWrapperRef}
+                 className={`dropdown-menu ${this.state.isDisplay ? 'show': ''}`}  aria-labelledby="navbarDropdown" >
                  <a className="dropdown-item" href="#">Action</a>
                  <a className="dropdown-item" href="#">Another action</a>
                  <div className="dropdown-divider"></div>
@@ -54,7 +67,7 @@ class Navbar extends React.Component {
                </div>
              </li>
              <li className="nav-item">
-               <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
+               <a className="nav-link disabled" href="#">Disabled</a>
              </li>
            </ul>
            <form className="form-inline my-2 my-lg-0">
