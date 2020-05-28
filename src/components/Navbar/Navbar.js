@@ -21,11 +21,6 @@ class Navbar extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  // componentDidMount() {
-  //   const input = document.getElementById("search");
-  //   input.focus();
-  // }
-
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
@@ -63,7 +58,7 @@ class Navbar extends React.Component {
                 <a className="nav-link dropdown-toggle" onClick={this.onButtonClick}>
                   Dropdown
                 </a>
-                <div ref={this.setWrapperRef}
+                <div
                      className={`dropdown-menu ${this.state.isDisplay ? 'show' : ''}`} aria-labelledby="navbarDropdown">
                   <a className="dropdown-item" href="#">Action</a>
                   <a className="dropdown-item" href="#">Another action</a>
